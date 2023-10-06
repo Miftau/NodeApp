@@ -4,15 +4,17 @@ const app = express()
 const port = 4000
 
 // middleware for static files
-app.use(express.static(`./public`))
+app.use(express.static('./public'))
 
 // middleware for getting for data
 
 app.use(express.urlencoded({extended: true}))
 
+
 app.listen(port, ()=> {
     console.log(`Server running on port ${port}`)
 })
+
 
 // home route
 app.get('/',(req, res)=> {
@@ -21,21 +23,21 @@ app.get('/',(req, res)=> {
 
 // post route
 
-app.post(`./submit`, (req, res)=> {
+app.post('/submit', (req, res)=> {
     const username = req.body.username
     const email = req.body.email
     console.log(req.body)
 
-    req.send(`
-           Your username is ${username} and email is ${eamil}
+    res.send(`
+           Your username is ${username} and email is ${email}
     `)
 })
 
-app.get(`/about`,(req, res)=> {
+app.get('/about',(req, res)=> {
     res.send(`<h1> You are welcome to my NodeApp</h1>`)
 })
 
-app.get(`/student`,(req, res)=> {
+app.get('/student',(req, res)=> {
     res.send(`<h1> Mr Progress</h1>
               <h1> Mr Yusuf</h1>
               <h1> Quadtech </h1>
@@ -43,6 +45,6 @@ app.get(`/student`,(req, res)=> {
     `)
 })
 
-app.all(`*`, (req, res)=> {
-    res.send(`<h1> PAGE NOT FOUNG! 404 </h1>`)
+app.all('*', (req, res)=> {
+    res.send(`<h1> PAGE NOT FOUNG! 404 PAGE </h1>`)
 })
