@@ -27,6 +27,17 @@ app.get('/contact',(req, res)=> {
     res.sendFile(__dirname, 'index.html')
 })
 
+app.post('/submit2', (req, res)=> {
+    const fullname = req.body.fullname
+    const email = req.body.email
+    const subject = req.body.subject
+    const content = req.body.content
+    console.log(req.body)
+
+    res.send(`
+           Hello! ${fullname} with email ${email}, Your message has been sent successfully
+    `)
+})
 
 // post route
 
