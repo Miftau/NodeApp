@@ -36,7 +36,29 @@ app.post('/submit', (req, res)=> {
 // contact get route
 
 app.get('/contact',(req, res)=> {
-    res.sendFile(__dirname, 'contact.html')
+    res.send(`
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Contact</title>
+</head>
+<body>
+    <form action="/submit-form" method="post">
+        <fieldset>
+            <h1> Please use the form below to contact us on your query</h1>
+            <input type="text" name="fullname" id="" placeholder="Enter your full name" required> <br>
+            <input type="email" name="email" id="" placeholder="Enter your email" required> <br>
+            <input type="text" name="subject" id="" placeholder="Enter the subject" required> <br>
+            <textarea name="content" id="" cols="20" rows="10" placeholder="Enter your message here"></textarea> <br>
+            <input type="submit" value="Submit">
+        </fieldset>
+    </form>
+</body>
+</html>
+    `)
 })
 
 app.post('/submit-form', (req, res)=> {
