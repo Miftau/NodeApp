@@ -24,7 +24,7 @@ app.get('/',(req, res)=> {
 // contact get route
 
 app.get('/contact',(req, res)=> {
-    res.sendFile(__dirname, 'index.html')
+    res.sendFile(__dirname, 'contact.html')
 })
 
 app.post('/submit2', (req, res)=> {
