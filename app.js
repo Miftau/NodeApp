@@ -1,7 +1,7 @@
 const express = require('express')
 
 const app = express()
-const port = 3000
+const port = 4000
 
 // middleware for static files
 app.use(express.static('./public'))
@@ -17,8 +17,8 @@ app.listen(port, ()=> {
 
 
 // home route
-app.get('/',(req, res)=> {
-    res.sendFile(__dirname, 'contact.html')
+app.get('/contact',(req, res)=> {
+    res.sendFile(__dirname, 'index.html')
 })
 
 // post route
@@ -35,7 +35,7 @@ app.post('/submit', (req, res)=> {
 
 // contact get route
 
-app.get('/contact',(req, res)=> {
+app.get('/',(req, res)=> {
     res.sendFile(__dirname, 'contact.html')
 })
 
