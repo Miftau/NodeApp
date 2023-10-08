@@ -17,7 +17,7 @@ app.listen(port, ()=> {
 
 
 // home route
-app.get('/contact',(req, res)=> {
+app.get('/',(req, res)=> {
     res.sendFile(__dirname, 'index.html')
 })
 
@@ -35,11 +35,11 @@ app.post('/submit', (req, res)=> {
 
 // contact get route
 
-app.get('/',(req, res)=> {
+app.get('/contact',(req, res)=> {
     res.sendFile(__dirname, 'contact.html')
 })
 
-app.post('/submit2', (req, res)=> {
+app.post('/submit-form', (req, res)=> {
     const fullname = req.body.fullname
     const email = req.body.email
     const subject = req.body.subject
