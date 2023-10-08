@@ -18,7 +18,19 @@ app.listen(port, ()=> {
 
 // home route
 app.get('/',(req, res)=> {
-    res.sendFile(__dirname, 'index.html')
+    res.sendFile(__dirname, 'contact.html')
+})
+
+// post route
+
+app.post('/submit', (req, res)=> {
+    const username = req.body.username
+    const email = req.body.email
+    console.log(req.body)
+
+    res.send(`
+           Your username is ${username} and email is ${email}
+    `)
 })
 
 // contact get route
@@ -39,17 +51,7 @@ app.post('/submit2', (req, res)=> {
     `)
 })
 
-// post route
 
-app.post('/submit', (req, res)=> {
-    const username = req.body.username
-    const email = req.body.email
-    console.log(req.body)
-
-    res.send(`
-           Your username is ${username} and email is ${email}
-    `)
-})
 
 app.get('/about',(req, res)=> {
     res.send(`<h1> You are welcome to my NodeApp</h1>`)
