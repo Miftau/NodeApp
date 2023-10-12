@@ -3,6 +3,8 @@ const express = require('express')
 const app = express()
 const port = 4000
 
+app.set('view engine', 'ejs')
+
 // middleware for static files
 app.use(express.static('./public'))
 
@@ -18,7 +20,7 @@ app.listen(port, ()=> {
 
 // home route
 app.get('/',(req, res)=> {
-    res.sendFile(__dirname, 'index.html')
+    res.render('Home', {title: 'Homepage', bodyContent: "This is an EJS HOME PAGE"})
 })
 
 // post route
