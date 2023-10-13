@@ -1,16 +1,36 @@
 const express = require('express')
 
 const app = express()
+const mongoose = require('mongoose')
 const port = 4000
+
+// middleware for getting for data
+
+app.use(express.urlencoded({extended: true}))
+
+// databse connection
+mongoose.connect('mongodb://127.0.0.1:27017/progress-DB')
+.then(() => console.log('Database connected successfully'))
+.catch(err => console.log(err.message))
+
+// DB schema
+const progressSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    }
+})
+const progressModel = mongoose.model('progressmodel', progressSchema)
 
 app.set('view engine', 'ejs')
 
 // middleware for static files
 //app.use(express.static('./public'))
 
-// middleware for getting for data
-
-app.use(express.urlencoded({extended: true}))
 
 
 app.listen(port, ()=> {
@@ -20,19 +40,17 @@ app.listen(port, ()=> {
 
 // home route
 app.get('/',(req, res)=> {
-    res.render('Home', {title: 'Homepage', bodyContent: "This is an EJS HOME PAGE"})
+    res.render('SignUp', {title: 'SignUp Page'})
 })
 
 // post route
 
-app.post('/submit', (req, res)=> {
-    const username = req.body.username
-    const email = req.body.email
+app.post('/submit', async(req, res)=> {
+    const {username, email} = req.body
     console.log(req.body)
-
-    res.send(`
-           Your username is ${username} and email is ${email}
-    `)
+    const saveData = new progressModel({username, email})
+    await saveData.save()
+    res.send('Data saved successfully')
 })
 
 // contact get route
