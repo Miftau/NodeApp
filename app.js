@@ -6,7 +6,7 @@ const port = 4000
 app.set('view engine', 'ejs')
 
 // middleware for static files
-app.use(express.static('./public'))
+//app.use(express.static('./public'))
 
 // middleware for getting for data
 
