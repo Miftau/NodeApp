@@ -24,7 +24,7 @@ const progressSchema = mongoose.Schema({
         required: true
     }
 })
-const progressModel = mongoose.model('progressmodel', progressSchema)
+const progressModel = mongoose.model('progressModel', progressSchema)
 
 app.set('view engine', 'ejs')
 
